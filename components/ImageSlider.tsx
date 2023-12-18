@@ -12,13 +12,14 @@ import {
   NativeScrollEvent,
   SafeAreaView,
 } from 'react-native';
+import { ImageObj } from './MainPage';
 
 const windowWidth = Dimensions.get('window').width;
 const imageWidth = windowWidth * 0.75; // Adjust the width of the images
 const containerHorizontalPadding = 20; // Adjust the padding of the images
 
 interface Props {
-  images: any[];
+  images: ImageObj[];
   imageMargin?: number;
   autoPlayInterval?: number;
 }
@@ -57,7 +58,6 @@ const ImageSlider = ({ images, imageMargin = 0, autoPlayInterval }: Props) => {
             animated: true,
           });
         }
-        return () => clearInterval(interval);
       }, autoPlayInterval);
 
     return () => clearInterval(interval);
@@ -85,7 +85,7 @@ const ImageSlider = ({ images, imageMargin = 0, autoPlayInterval }: Props) => {
         ref={scrollViewRef}
         showsHorizontalScrollIndicator={false}
         onMomentumScrollEnd={handleScroll}
-        snapToInterval={imageWidth + imageMargin * 2}
+        snapToInterval={imageWidth + imageMargin * 2 + 0.25}
         contentContainerStyle={{
           paddingHorizontal:
             (windowWidth - imageWidth) / 2 -
@@ -109,7 +109,11 @@ const ImageSlider = ({ images, imageMargin = 0, autoPlayInterval }: Props) => {
           <Image
             source={{ uri: activeImage ?? '' }}
             contentFit='contain'
-            style={{ flex: 1, width: '100%', backgroundColor: '#0553' }}
+            style={{
+              flex: 1,
+              width: '100%',
+              backgroundColor: '#0553',
+            }}
           />
           <TouchableOpacity
             style={styles.closeButton}
@@ -138,6 +142,7 @@ const styles = StyleSheet.create({
   imageStyle: {
     width: imageWidth,
     height: 200,
+    borderRadius: 10,
   },
   modalView: {
     flex: 1,
