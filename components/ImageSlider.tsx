@@ -15,7 +15,7 @@ import {
 
 const windowWidth = Dimensions.get('window').width;
 const imageWidth = windowWidth * 0.75; // Adjust the width of the images
-const containerHorizontalPadding = 10; // Adjust the padding of the images
+const containerHorizontalPadding = 20; // Adjust the padding of the images
 
 interface Props {
   images: any[];
@@ -85,7 +85,7 @@ const ImageSlider = ({ images, imageMargin = 0, autoPlayInterval }: Props) => {
         ref={scrollViewRef}
         showsHorizontalScrollIndicator={false}
         onMomentumScrollEnd={handleScroll}
-        snapToInterval={imageWidth + imageMargin * 2 + 1}
+        snapToInterval={imageWidth + imageMargin * 2}
         contentContainerStyle={{
           paddingHorizontal:
             (windowWidth - imageWidth) / 2 -
