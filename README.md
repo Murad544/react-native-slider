@@ -1,4 +1,4 @@
-This is a react native application<br /><br />
+This is a react native application with expo<br /><br />
 To start the app you need to:<br />
 install the expo go from app store/ play market<br />
 npm i<br />
