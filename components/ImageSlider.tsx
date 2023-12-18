@@ -15,7 +15,7 @@ import {
 import { ImageObj } from './MainPage';
 
 const windowWidth = Dimensions.get('window').width;
-const imageWidth = windowWidth * 0.75; // Adjust the width of the images
+const imageWidth = windowWidth * 0.7; // Adjust the width of the images
 const containerHorizontalPadding = 20; // Adjust the padding of the images
 
 interface Props {
@@ -85,7 +85,7 @@ const ImageSlider = ({ images, imageMargin = 0, autoPlayInterval }: Props) => {
         ref={scrollViewRef}
         showsHorizontalScrollIndicator={false}
         onMomentumScrollEnd={handleScroll}
-        snapToInterval={imageWidth + imageMargin * 2 + 0.25}
+        snapToInterval={imageOffsets[1] + 0.8}
         contentContainerStyle={{
           paddingHorizontal:
             (windowWidth - imageWidth) / 2 -
@@ -129,7 +129,6 @@ const ImageSlider = ({ images, imageMargin = 0, autoPlayInterval }: Props) => {
 
 const styles = StyleSheet.create({
   container: {
-    // flex: 1,
     justifyContent: 'center',
     paddingHorizontal: containerHorizontalPadding,
   },
@@ -137,7 +136,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     height: 200,
     flexGrow: 0,
-    // Additional styles if needed
   },
   imageStyle: {
     width: imageWidth,

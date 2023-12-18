@@ -15,7 +15,7 @@ export interface ImageObj {
 const getImages = async () => {
   try {
     const response = await axios.get(
-      'https://picsum.photos/v2/list?page=2&limit=20',
+      'https://picsum.photos/v2/list?page=2&limit=10',
     );
     return response.data;
   } catch (err: any) {
